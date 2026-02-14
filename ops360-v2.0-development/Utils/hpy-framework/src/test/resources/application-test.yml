@@ -1,0 +1,8 @@
+logging:
+  level: 
+    root: ERROR
+    org.hibernate: INFO
+    org.hibernate.SQL: DEBUG
+    org.hibernate.cache: DEBUG
+    org.hibernate.stat: DEBUG
+    
