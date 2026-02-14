@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Rule Efficiency Notification</title>
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #f4f4f4; padding: 10px; text-align: center; }
+        .content { padding: 20px; }
+        .button { background-color: #007bff; color: #fff; padding: 10px 20px; text-decoration: none; display: inline-block; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h2>Rule Efficiency Report</h2>
+    </div>
+    <div class="content">
+        <p>Dear <span th:text="${recipientName}"[recipientName]</span>,</p>
+        <p>The latest rule efficiency metrics are available for review.</p>
+        <p>Details:</p>
+        <ul>
+            <li>Rule ID: <span th:text="${ruleId}">[ruleId]</span></li>
+            <li>Efficiency Score: <span th:text="${efficiencyScore}">[efficiencyScore]</span></li>
+            <li>Period: <span th:text="${period}">[period]</span></li>
+        </ul>
+        <p>Access the detailed report here:</p>
+        <a th:href="${reportUrl}" class="button">View Report</a>
+        <p>For inquiries, please contact our analytics team.</p>
+        <p>Best regards,<br/>The Analytics Team</p>
+    </div>
+</div>
+</body>
+</html>

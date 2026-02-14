@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Account Updated</title>
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #f4f4f4; padding: 10px; text-align: center; }
+        .content { padding: 20px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h2>Account Update Notification</h2>
+    </div>
+    <div class="content">
+        <p>Dear <span th:text="${userName}">User</span>,</p>
+        <p>Your account details associated with the email <strong th:text="${userEmail}">[userEmail]</strong> have been updated.</p>
+        <p>Changes include: <span th:text="${changesSummary}">Updated profile information</span>.</p>
+        <p>If you did not make these changes, please contact our support team immediately.</p>
+        <p>Best regards,<br/>The Team</p>
+    </div>
+</div>
+</body>
+</html>

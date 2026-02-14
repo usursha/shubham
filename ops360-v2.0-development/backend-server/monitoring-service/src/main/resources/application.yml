@@ -1,0 +1,42 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: monitoring-service
+logging:
+  level:
+    com:
+      hpy: INFO
+  
+springdoc:
+  api-docs:
+    path: /v3/api-docs 
+  swagger-ui:
+    path: /swagger-ui/index.html
+    
+daily:
+  scheduled:
+    cron: 0 30 23 * * *
+    
+user-range:
+  from: 0
+  to: 1000
+
+ce:  
+  colours: "0xFFFFAA67"
+  max-counts-colours: "0xFF10D973"
+
+cm:  
+  colours: "0xFFFFAA67"
+  max-counts-colours: "0xFF10D973"
+  
+keycloak:
+  totalCECount: http://localhost:9104/user-service/total-ce-user-count
+  totalCMCount: http://localhost:9104/user-service/total-cm-user-count
+  allUserCount: http://localhost:9104/user-service/total-user-count
+  allactivecmlist: http://localhost:9104/user-service/total-cm-users
+  allactivecelist: http://localhost:9104/user-service/total-ce-users
+   
+app:
+  cross-origin:
+    allow: https://ops360uat.hitachi-payments.com

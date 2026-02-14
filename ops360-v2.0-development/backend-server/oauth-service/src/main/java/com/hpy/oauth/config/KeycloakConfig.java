@@ -1,0 +1,54 @@
+package com.hpy.oauth.config;
+
+import org.keycloak.OAuth2Constants;
+import org.keycloak.admin.client.Keycloak;
+import org.keycloak.admin.client.KeycloakBuilder;
+import org.keycloak.admin.client.resource.UsersResource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.reactive.function.client.WebClient;
+
+@Configuration
+public class KeycloakConfig {
+
+	@Value("${keycloak.adminClientId}")
+	private String adminClientId;
+
+	@Value("${keycloak.adminClientSecret}")
+	private String adminClientSecret;
+
+	@Value("${keycloak.urls.auth}")
+	private String authServerUrl;
+
+	@Value("${keycloak.realm}")
+	private String realm;
+
+	@Bean
+	WebClient webclient() {
+		return WebClient.builder().build();
+	}
+	 
+	@Bean
+	UsersResource usersResource(Keycloak keycloak) {
+		return keycloak.realm(realm).users();
+	}
+	
+	
+	@Bean
+	RestTemplate restTemplate(RestTemplateBuilder builder) {
+		return builder.build();
+	}
+
+	@Bean
+	Keycloak keycloak() {
+
+		return KeycloakBuilder.builder().serverUrl(authServerUrl).realm(realm)
+				.grantType(OAuth2Constants.CLIENT_CREDENTIALS).clientId(adminClientId).clientSecret(adminClientSecret)
+				.build();
+
+	}
+	
+}

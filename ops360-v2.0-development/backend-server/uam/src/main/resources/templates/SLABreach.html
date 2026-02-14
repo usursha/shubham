@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>SLA Breach Notification</title>
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #f4f4f4; padding: 10px; text-align: center; }
+        .content { padding: 20px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h2>SLA Breach Alert</h2>
+    </div>
+    <div class="content">
+        <p>Dear <span th:text="${recipientName}">[recipientName]</span>,</p>
+        <p>An SLA breach has been detected for the following case:</p>
+        <p>Details:</p>
+        <ul>
+            <li>Case ID: <span th:text="${caseId}">[caseId]</span></li>
+            <li>Breach Reason: <span th:text="${breachReason}">[breachReason]</span></li>
+            <li>Deadline: <span th:text="${deadline}">[deadline]</span></li>
+        </ul>
+        <p>Please take immediate action to address this issue.</p>
+        <p>For inquiries, please contact our compliance team.</p>
+        <p>Best regards,<br/>The Compliance Team</p>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,74 @@
+{
+    "atmId": "INATM001",
+    "address": "parel",
+    "mtdUptime": 98,
+    "cra": "CashExpress Inc.",
+    "vendorDetails": [
+      {
+        "type": "BLM",
+        "name": "SecureCash India Pvt. Ltd."
+      },
+      {
+        "type": "NETWORK",
+        "name": "TechConnect Solutions"
+      },
+      {
+        "type": "UPS",
+        "name": "PowerGuard Technologies"
+      }
+    ],
+    "ticketHistory": [
+      {
+        "id": 1,
+        "atmId": "INATM001",
+        "ticketNumber": "TCKT-001",
+        "owner": "FLM",
+        "status": "OPEN",
+        "problem": "Cash Out",
+        "expectedTat": 2,
+        "creatDate": "29 Feb '24, 12:30 pm",
+        "lastUpdateDate": "29 Feb '24, 01:30 pm",
+        "completionTime": 6,
+        "remarks": []
+      },
+      {
+        "id": 2,
+        "atmId": "INATM001",
+        "ticketNumber": "TCKT-002",
+        "owner": "FLM",
+        "status": "OPEN",
+        "problem": "Receipt Printer",
+        "expectedTat": 2,
+        "creatDate": "15 Feb '24, 12:30 pm",
+        "lastUpdateDate": "15 Feb '24, 02:30 pm",
+        "completionTime": 6,
+        "remarks": []
+      },
+      {
+        "id": 3,
+        "atmId": "INATM001",
+        "ticketNumber": "TCKT-003",
+        "owner": "FLM",
+        "status": "OPEN",
+        "problem": "EJ Error",
+        "expectedTat": 2,
+        "creatDate": "07 Feb '24, 12:30 pm",
+        "lastUpdateDate": "07 Feb '24, 01:30 pm",
+        "completionTime": 6,
+        "remarks": []
+      },
+      {
+        "id": 4,
+        "atmId": "INATM001",
+        "ticketNumber": "TCKT-005",
+        "owner": "FLM",
+        "status": "OPEN",
+        "problem": "Dispenser Error Low",
+        "expectedTat": 2,
+        "creatDate": "28 Feb '24, 12:30 pm",
+        "lastUpdateDate": "28 Feb '24, 01:30 pm",
+        "completionTime": 6,
+        "remarks": []
+      }
+    ]
+}

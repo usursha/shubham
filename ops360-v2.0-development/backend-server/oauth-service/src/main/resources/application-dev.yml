@@ -1,0 +1,52 @@
+app:
+  cross-origin:
+    allow: https://ops360dev.hitachi-payments.com    
+
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000 #Admin portal url.   
+        instance:
+          name: OAuth Service
+          service-base-url: http://localhost:9103 #This is current application url.          
+  datasource:
+    url: jdbc:postgresql://localhost:5432/keycloak
+    username: postgres
+    password: 1234
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+        
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+  
+keycloak:
+  domain: localhost:8080
+  realm: HPY
+  resource: ops-360
+  issuer-uri: https://${keycloak.domain}
+  adminClientSecret: 13ptMbHcKqskC5zC586keD7VNBGsUTkJ
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:9101/eureka/
+
+jwt:
+  auth:
+    converter:
+      principle-attribute: preferred_username 
+      resource-id: ops360					

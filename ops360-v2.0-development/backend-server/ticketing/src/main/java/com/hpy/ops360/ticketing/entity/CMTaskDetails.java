@@ -1,0 +1,154 @@
+package com.hpy.ops360.ticketing.entity;
+
+import java.io.Serializable;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+//@EqualsAndHashCode(callSuper = true)
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Data
+public class CMTaskDetails implements Serializable {
+
+//	@Id
+//	private Long sr_no;
+//
+//	@Column(name = "ticket_number")
+//	private String ticketNumber; // ticketno
+//
+//	@Column(name = "atm_id")
+//	private String atmid;
+//
+//	@Column(name = "comment")
+//	private String comment;
+//
+//	@CreatedBy
+//	@Column(name = "created_by")
+//	private String createdBy;
+//
+//	@CreationTimestamp
+//	@Column(name = "created_date")
+//	private LocalDateTime createdDate;
+//
+//	@Column(name = "diagnosis")
+//	private String diagnosis;
+//
+//	@Column(name = "document")
+//	private String document;
+//
+//	@Column(name = "document_name")
+//	private String documentName;
+//
+//	@LastModifiedBy
+//	@Column(name = "last_modified_by")
+//	private String lastModifiedBy;
+//
+//	@UpdateTimestamp
+//	@Column(name = "last_modified_date")
+//	private LocalDateTime lastModifiedDate;
+//
+//	@Column(name = "reason")
+//	private String reason;
+//
+//	@Column(name = "ref_no")
+//	private String refNo; // not sure what it is
+//
+//	@Column(name = "status")
+//	private String status;
+//
+//	@Column(name = "username")
+//	private String username;
+//
+//	@Column(name = "checker_name")
+//	private String checkerName;
+//
+//	@Column(name = "checker_time")
+//	private LocalDateTime checkerTime;
+//
+//	@Column(name = "checker_reject_reason")
+//	private String checkerRejectReason;
+//
+//	@Column(name = "checker_comment")
+//	private String checker_comment; // Note: Updated to match the database column name
+//
+//	@Column(name = "crm_status")
+//	private String crmStatus;
+//
+//	@Column(name = "crm_time")
+//	private LocalDateTime crmTime;
+//	
+
+	private static final long serialVersionUID = -3328590094816811088L;
+
+	@Id
+	@Column(name = "sr_no")
+	private Long srNo;
+
+	@Column(name = "atm_id")
+	private String atmId;
+
+	@Column(name = "comment")
+	private String comment;
+
+	@Column(name = "created_by")
+	private String createdBy;
+
+	@Column(name = "diagnosis")
+	private String diagnosis;
+
+	@JsonIgnore
+	@Column(name = "document")
+	private String document;
+
+	@Column(name = "document_name")
+	private String documentName;
+
+	@Column(name = "reason")
+	private String reason;
+
+	@Column(name = "ticket_number")
+	private String ticketNumber;
+
+	@Column(name = "status")
+	private String status;
+
+	@Column(name = "ref_no")
+	private String refNo;
+
+	@JsonIgnore
+	@Column(name = "document1")
+	private String document1;
+
+	@Column(name = "document1_name")
+	private String document1Name;
+
+	@JsonIgnore
+	@Column(name = "document2")
+	private String document2;
+
+	@Column(name = "document2_name")
+	private String document2Name;
+
+	@JsonIgnore
+	@Column(name = "document3")
+	private String document3;
+
+	@Column(name = "document3_name")
+	private String document3Name;
+
+	@JsonIgnore
+	@Column(name = "document4")
+	private String document4;
+
+	@Column(name = "document4_name")
+	private String document4Name;
+
+}

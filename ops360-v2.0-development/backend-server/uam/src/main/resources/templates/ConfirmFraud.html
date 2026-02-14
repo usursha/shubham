@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Fraud Confirmation Notice</title>
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #f4f4f4; padding: 10px; text-align: center; }
+        .content { padding: 20px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h2>Fraud Confirmation Notice</h2>
+    </div>
+    <div class="content">
+        <p>Dear <span th:text="${merchantName}">[merchantName]</span>,</p>
+        <p>We have identified a potentially fraudulent transaction (ID: <strong th:text="${transactionId}">[transactionId]</strong>).</p>
+        <p>Please hold the payout for this transaction until further notice.</p>
+        <p>Details:</p>
+        <ul>
+            <li>Transaction Amount: <span th:text="${amount}">[amount]</span></li>
+            <li>Date: <span th:text="${transactionDate}">[transactionDate]</span></li>
+            <li>Reason: <span th:text="${fraudReason}">[fraudReason]</span></li>
+        </ul>
+        <p>For inquiries, please contact our fraud team.</p>
+        <p>Best regards,<br/>The Fraud Detection Team</p>
+    </div>
+</div>
+</body>
+</html>

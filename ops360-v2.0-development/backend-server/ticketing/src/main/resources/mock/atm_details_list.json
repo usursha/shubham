@@ -1,0 +1,198 @@
+[
+	{
+		"atmId": "INATM001",
+		"address": "parel",
+		"mtdUptime": 98,
+		"cra": "CashExpress Inc.",
+		"vendorDetails": [
+			{
+				"type": "BLM",
+				"name": "SecureCash India Pvt. Ltd."
+			},
+			{
+				"type": "NETWORK",
+				"name": "TechConnect Solutions"
+			},
+			{
+				"type": "UPS",
+				"name": "PowerGuard Technologies"
+			}
+		],
+		"ticketHistory": [
+			{
+				"id": 1,
+				"atmId": "INATM001",
+				"ticketNumber": "TCKT-001",
+				"owner": "FLM",
+				"status": "OPEN",
+				"problem": "Cash Problem",
+				"expectedTat": 2,
+				"creatDate": "29 Feb '24, 12:30 pm",
+				"lastUpdateDate": "29 Feb '24, 01:30 pm",
+				"completionTime": 6,
+				"remarks": null
+			},
+			{
+				"id": 2,
+				"atmId": "INATM001",
+				"ticketNumber": "TCKT-002",
+				"owner": "FLM",
+				"status": "OPEN",
+				"problem": "Cash Problem",
+				"expectedTat": 2,
+				"creatDate": "15 Feb '24, 12:30 pm",
+				"lastUpdateDate": "15 Feb '24, 02:30 pm",
+				"completionTime": 6,
+				"remarks": null
+			},
+			{
+				"id": 3,
+				"atmId": "INATM001",
+				"ticketNumber": "TCKT-003",
+				"owner": "FLM",
+				"status": "OPEN",
+				"problem": "Cash Problem",
+				"expectedTat": 2,
+				"creatDate": "07 Feb '24, 12:30 pm",
+				"lastUpdateDate": "07 Feb '24, 01:30 pm",
+				"completionTime": 6,
+				"remarks": null
+			},
+			{
+				"id": 4,
+				"atmId": "INATM001",
+				"ticketNumber": "TCKT-004",
+				"owner": "FLM",
+				"status": "OPEN",
+				"problem": "Cash Problem",
+				"expectedTat": 2,
+				"creatDate": "28 Feb '24, 12:30 pm",
+				"lastUpdateDate": "28 Feb '24, 01:30 pm",
+				"completionTime": 6,
+				"remarks": null
+			}
+		]
+	},
+	{
+		"atmId": "INATM002",
+		"address": "goregaon",
+		"mtdUptime": 96,
+		"cra": "CashExpress Inc.",
+		"vendorDetails": [
+			{
+				"type": "BLM",
+				"name": "SecureCash India Pvt. Ltd."
+			},
+			{
+				"type": "NETWORK",
+				"name": "TechConnect Solutions"
+			},
+			{
+				"type": "UPS",
+				"name": "PowerGuard Technologies"
+			}
+		],
+		"ticketHistory": [
+			{
+				"id": 5,
+				"atmId": "INATM002",
+				"ticketNumber": "TCKT-005",
+				"owner": "FLM",
+				"status": "OPEN",
+				"problem": "Cash Problem",
+				"expectedTat": 2,
+				"creatDate": "27 Feb '24, 12:30 pm",
+				"lastUpdateDate": "27 Feb '24, 01:30 pm",
+				"completionTime": 6,
+				"remarks": null
+			},
+			{
+				"id": 6,
+				"atmId": "INATM002",
+				"ticketNumber": "TCKT-006",
+				"owner": "FLM",
+				"status": "OPEN",
+				"problem": "Cash Problem",
+				"expectedTat": 2,
+				"creatDate": "07 Feb '24, 12:30 pm",
+				"lastUpdateDate": "07 Feb '24, 01:30 pm",
+				"completionTime": 6,
+				"remarks": null
+			},
+			{
+				"id": 7,
+				"atmId": "INATM002",
+				"ticketNumber": "TCKT-007",
+				"owner": "FLM",
+				"status": "OPEN",
+				"problem": "Cash Problem",
+				"expectedTat": 2,
+				"creatDate": "08 Feb '24, 12:30 pm",
+				"lastUpdateDate": "08 Feb '24, 01:30 pm",
+				"completionTime": 6,
+				"remarks": null
+			},
+			{
+				"id": 8,
+				"atmId": "INATM002",
+				"ticketNumber": "TCKT-008",
+				"owner": "FLM",
+				"status": "OPEN",
+				"problem": "Cash Problem",
+				"expectedTat": 2,
+				"creatDate": "09 Feb '24, 12:30 pm",
+				"lastUpdateDate": "09 Feb '24, 01:30 pm",
+				"completionTime": 6,
+				"remarks": null
+			}
+		]
+	},
+	{
+		"atmId": "INATM003",
+		"address": "thane",
+		"mtdUptime": 95,
+		"cra": "CashExpress Inc.",
+		"vendorDetails": [
+			{
+				"type": "BLM",
+				"name": "SecureCash India Pvt. Ltd."
+			},
+			{
+				"type": "NETWORK",
+				"name": "TechConnect Solutions"
+			},
+			{
+				"type": "UPS",
+				"name": "PowerGuard Technologies"
+			}
+		],
+		"ticketHistory": [
+			{
+				"id": 9,
+				"atmId": "INATM003",
+				"ticketNumber": "TCKT-009",
+				"owner": "SLM",
+				"status": "OPEN",
+				"problem": "Cash Problem",
+				"expectedTat": 2,
+				"creatDate": "29 Feb '24, 12:30 pm",
+				"lastUpdateDate": "29 Feb '24, 01:30 pm",
+				"completionTime": 4,
+				"remarks": null
+			},
+			{
+				"id": 10,
+				"atmId": "INATM003",
+				"ticketNumber": "TCKT-010",
+				"owner": "BLM",
+				"status": "OPEN",
+				"problem": "Cash Problem",
+				"expectedTat": 2,
+				"creatDate": "24 Feb '24, 12:30 pm",
+				"lastUpdateDate": "24 Feb '24, 01:30 pm",
+				"completionTime": 16,
+				"remarks": null
+			}
+		]
+	}
+]

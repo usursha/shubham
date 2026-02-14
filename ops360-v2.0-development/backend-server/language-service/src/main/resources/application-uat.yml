@@ -1,0 +1,71 @@
+server:
+  port: 9105
+  
+spring:
+  boot:
+    admin:
+      client:
+        url: http://172.16.15.192:9000 #Admin portal url.
+        instance:
+          name: Language Service
+          service-base-url: http://172.16.15.192:9105 #This is current application url.
+  application:
+    name: language-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+#  messages:
+#    basename: messages
+
+hpy:
+  language: 
+    default: en
+    message-file: /var/language/messages.properties
+    portal-message-file: /var/language/portal-messages.properties
+    
+app:
+  cross-origin:
+    allow: https://ops360uat.hitachi-payments.com
+    
+jwt:
+  auth:
+    converter:
+      resource-id: ${keycloak.resource}
+      principle-attribute: preferred_username  
+      
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+       
+keycloak:
+  domain: 172.16.15.192:9102
+  realm: HPY
+  resource: ops360
+  issuer-uri: http://${keycloak.domain}
+  adminClientSecret: Q8Gz70vzjzFmMMoL8EFBKx3z9Pz7v3Qv
+  auth-server-url: http://${keycloak.domain}
+  adminClientId: ${keycloak.resource}
+  urls:
+    auth: http://${keycloak.domain}
+    tokenURL: http://${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+  ssl-required: external
+  use-resource-role-mappings: true
+
+    
+eureka:
+  instance:
+    prerfer-ip-address: true
+  client:
+    fetch-registry: true
+    registry-with-eureka: true
+    service-url:
+      defaultZone: http://172.16.15.192:9101/eureka
+

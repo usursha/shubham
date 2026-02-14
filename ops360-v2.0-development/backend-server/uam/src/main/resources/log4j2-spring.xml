@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="INFO" monitorInterval="30">
+	<!-- Logging Properties -->
+	<Properties>
+		 <Property name="LOG_PATTERN">%d{yyyy-MM-dd HH:mm:ss} %-5p %L: - %m%n</Property>
+		<Property name="APP_LOG_ROOT">D:\Log</Property>
+	</Properties>
+	<Appenders>
+		<!-- Console Appender -->
+		<Console name="Console" target="SYSTEM_OUT" follow="true">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+		</Console>
+		
+		<File name="appStartupLog" fileName="${APP_LOG_ROOT}/app-framework.log">
+            <PatternLayout pattern="${LOG_PATTERN}" />
+        </File>
+		<!-- File Appenders on need basis 
+		<RollingFile name="frameworkLog" fileName="${APP_LOG_ROOT}/app-framework.log"
+			filePattern="${APP_LOG_ROOT}/app-framework-%d{yyyy-MM-dd}-%i.log">
+			<LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</RollingFile>
+		-->
+		
+		<RollingFile name="debugLog" fileName="${APP_LOG_ROOT}/app-debug.log"
+			filePattern="${APP_LOG_ROOT}/app-debug-%d{yyyy-MM-dd}-%i.log">
+			<LevelRangeFilter minLevel="DEBUG" maxLevel="DEBUG" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</RollingFile>
+		<RollingFile name="infoLog" fileName="${APP_LOG_ROOT}/app-info.log"
+			filePattern="${APP_LOG_ROOT}/app-info-%d{yyyy-MM-dd}-%i.log">
+			<LevelRangeFilter minLevel="INFO" maxLevel="INFO" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</RollingFile>
+		<RollingFile name="errorLog" fileName="${APP_LOG_ROOT}/app-error.log"
+			filePattern="${APP_LOG_ROOT}/app-error-%d{yyyy-MM-dd}-%i.log">
+			<LevelRangeFilter minLevel="ERROR" maxLevel="ERROR" onMatch="ACCEPT" onMismatch="DENY" />
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="10" />
+		</RollingFile>
+		<RollingFile name="perfLog" fileName="${APP_LOG_ROOT}/app-perf.log"
+			filePattern="${APP_LOG_ROOT}/app-perf-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="1" />
+		</RollingFile>
+		<RollingFile name="traceLog" fileName="${APP_LOG_ROOT}/app-trace.log"
+			filePattern="${APP_LOG_ROOT}/app-trace-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<SizeBasedTriggeringPolicy size="10MB" />
+			</Policies>
+			<DefaultRolloverStrategy max="1" />
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<!--
+		<Logger name="com.myaltid" additivity="false" level="info">
+            <AppenderRef ref="traceLog" level="trace" />
+            <AppenderRef ref="debugLog" level="debug" />
+            <AppenderRef ref="infoLog" level="info" />
+            <AppenderRef ref="errorLog" level="error" />
+            <AppenderRef ref="Console" level="warn" />
+        </Logger>
+        -->
+       <Logger name="com.atmceo.startup" level="off" additivity="false">
+            <AppenderRef ref="appStartupLog" />
+            
+        </Logger>
+        <!-- Loggers for Spring framework -->
+        <Logger name="org.springframework" level="off">
+            <AppenderRef ref="appStartupLog" />
+            
+        </Logger>
+		<Logger name="com.atmceo.trace" level="trace">
+			<AppenderRef ref="traceLog" />
+		</Logger>
+		<Logger name="com.atmceo.debug" level="debug">
+			<AppenderRef ref="debugLog" />
+		</Logger>
+		<Logger name="com.atmceo.info" level="info">
+			<AppenderRef ref="infoLog" />
+		</Logger>
+		<Logger name="com.atmceo.error" level="error">
+			<AppenderRef ref="errorLog" />
+		</Logger>
+		<Logger name="com.atmceo.warn" level="warn">
+			<AppenderRef ref="Console" />
+		</Logger>
+		<!--
+		<Logger name="com.myaltid.trace" additivity="true" level="trace">
+			<AppenderRef ref="traceLog" />
+			<AppenderRef ref="Console" />
+		</Logger>
+		<Logger name="com.myaltid.debug" additivity="true" level="debug">
+			<AppenderRef ref="debugLog" />
+			<AppenderRef ref="infoLog" />
+			<AppenderRef ref="errorLog" />
+			<AppenderRef ref="Console" />
+		</Logger>
+		-->
+		<!-- <Logger name="com.myaltid.app" additivity="false" level="info">
+            <AppenderRef ref="perfLog" />
+            <AppenderRef ref="Console"/>
+        </Logger>
+       -->
+		<Root level="info">
+			<!-- Disabling root level =""logger since we're handling everything in the 'com.myaltid' logger -->
+			<!-- <AppenderRef ref="Console" /> -->
+		</Root>
+	</Loggers>
+</Configuration>

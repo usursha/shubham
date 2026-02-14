@@ -1,0 +1,182 @@
+spring:
+  profiles:
+    active: local
+
+    
+#springdoc:
+# api-docs:
+#   path: /v3/api-docs #these urls will used to load the swagger ui of this service by the api gateway
+# swagger-ui:
+#   path: /swagger-ui.html
+#     
+#spring:
+#  application:
+#    name: dashboard-service
+#  datasource:
+#    url: jdbc:sqlserver://172.16.15.132:1433;databaseName=OPS360UAT;encrypt=true;trustServerCertificate=true;
+#    username: appuser
+#    password: hitachi@123
+#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#  jpa:
+#    hibernate:
+#      ddl-auto: none
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.SQLServerDialect
+#        format_sql: true
+#
+#        
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
+#          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+# 
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include:
+#        - "*"
+#          
+#jwt:
+#  auth:
+#    converter:
+#      resource-id: ${keycloak.resource}
+#      principle-attribute: preferred_username  
+#      
+#  
+#keycloak:
+#  domain: 127.0.0.1:8080
+##  domain: 172.16.15.192:9102
+##  domain: ops360dev.hitachi-payments.com:9102
+#  realm: HPY
+#  resource: ops-360
+#  issuer-uri: http://${keycloak.domain}
+#  adminClientSecret: 3Asf42GnEqOfatIQZULao5764AoYNnLY
+#  auth-server-url: http://${keycloak.domain}
+#  adminClientId: ${keycloak.resource}
+#  urls:
+#    auth: http://${keycloak.domain}
+#    tokenURL: http://${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+#  ssl-required: external
+#  use-resource-role-mappings: true
+#        
+#eureka:
+#  instance:
+#    prerfer-ip-address: true
+#  client:
+#    fetch-registry: true
+#    registry-with-eureka: true
+#    service-url:
+##      defaultZone: http://172.16.15.192:9101/eureka
+#     defaultZone: http://127.0.0.1:9101/eureka
+#  
+#logging:
+#  level:
+#    com.hpy: DEBUG
+#     
+#synergy:
+#  base-url: https://ops360dev.hitachi-payments.com/synergy/HitachiAPI_Integration/api
+#  username: OPS360API
+#  password: Cogent@123
+#  
+#app:
+#  cross-origin:
+#    allow: https://ops360uat.hitachi-payments.com
+#ops360:
+#  dashboard:
+#    max-atm-list-count: 5
+
+  application:
+    name: dashboard-service
+  datasource:
+    url: jdbc:sqlserver://172.16.15.132:1433;databaseName=OPS360UAT;encrypt=true;trustServerCertificate=true;
+    username: appuser
+    password: hitachi@123
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+
+        
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+ 
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - "*"
+          
+asset-service:
+  url: http://localhost:9106/feign-client
+  
+profile-picture:
+  url: https://ops360dev.hitachi-payments.com/ops/gateway/feign-client/get-profile-picture-file/%s
+          
+jwt:
+  auth:
+    converter:
+      resource-id: ${keycloak.resource}
+      principle-attribute: preferred_username  
+      
+  
+keycloak:
+  domain: localhost:8080
+#  domain: 172.16.15.192:9102
+#  domain: ops360dev.hitachi-payments.com:9102
+  realm: HPY
+  resource: ops-360
+  issuer-uri: http://${keycloak.domain}
+  adminClientSecret: 13ptMbHcKqskC5zC586keD7VNBGsUTkJ
+  auth-server-url: http://${keycloak.domain}
+  adminClientId: ${keycloak.resource}
+  urls:
+    auth: http://${keycloak.domain}
+    tokenURL: http://${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+  ssl-required: external
+  use-resource-role-mappings: true
+        
+eureka:
+  instance:
+    prerfer-ip-address: true
+  client:
+    fetch-registry: true
+    registry-with-eureka: true
+    service-url:
+#      defaultZone: http://172.16.15.192:9101/eureka
+     defaultZone: http://127.0.0.1:9101/eureka
+  
+logging:
+  level:
+    com.hpy: INFO
+    org.apache.kafka.clients.NetworkClient: ERROR
+    org.apache.kafka.clients: ERROR
+     
+synergy:
+  base-url: https://ops360dev.hitachi-payments.com/synergy/HitachiAPI_Integration/api
+  username: OPS360API
+  password: Cogent@123
+  
+app:
+  cross-origin:
+    allow: https://ops360uat.hitachi-payments.com
+ops360:
+  dashboard:
+    batch-size: 40
+    max-atm-list-count: 5
+  executor.poolSize: 10
+  

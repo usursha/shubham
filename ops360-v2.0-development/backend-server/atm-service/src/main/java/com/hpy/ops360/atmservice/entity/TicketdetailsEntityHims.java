@@ -1,0 +1,73 @@
+package com.hpy.ops360.atmservice.entity;
+
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Data
+public class TicketdetailsEntityHims {
+	
+//	@Id
+//    private Long sr_no;
+//    private String ticketNumber;
+//    private String ceUserName;
+//    private String atmId;
+//    private String owner;
+//    private String subcallType;
+//    private LocalDateTime etaDateTime;
+//    private String vendor;
+//    private String eventcode;
+//    private String travelEtaDatetime;
+//    private String downTime;
+//    private String travelHours;
+//    private String flagStatus;
+//    private LocalDateTime flag_status_inserttime;
+//    private String createdTime;
+//    private String border;
+//    private String fill;
+    
+    
+    @Id
+	private String srno;
+	private String customer;
+	private String equipmentid;
+	private String model;
+	private String atmcategory;
+	private String atmclassification;
+	private String calldate;
+	private String createddate;
+	private String calltype;
+	private String subcalltype;
+	private String completiondatewithtime;
+	private int downtimeinmins;
+	private String vendor;
+	private String servicecode;
+	private String diagnosis;
+	private String eventcode;
+	private String helpdeskname;
+	private String lastallocatedtime;
+	private String lastcomment;
+	private String lastactivity;
+	private String status;
+	private String substatus;
+	private String ro;
+	private String site;
+	//private String bankAccount;
+
+	// @JsonProperty("Address")
+	private String address;
+	private String city;
+	private String locationname;
+	private String state;
+	private String nextfollowup;
+
+
+}

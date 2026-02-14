@@ -1,0 +1,156 @@
+  
+spring:
+  profiles:
+    active: dev
+  
+# application.yml
+dailyreport:
+  columns: "Ticket Number, BANK as per Synergy, BANK as per Ops360, ATM ID, ATM Category, Site Type, Address, City, State, Zone, Zonal Head, State Head, Channel Manager, Channel Executive, Field Service Coordinator, Owner, SubCall, Event Code, Vendor, Downtime (Hours/Min), Downtime (Bucket), Ticket Created Date & Time, Expected TaT, First Dispatch Date & Time, Re-allocated Docket No, Last Allocated By, Last Allocated Date & Time, CE's Action Date & Time, CE ETA Updated Date & Time, Call Close Date & Time, Call Close within TaT/Out of TaT, Customer Remarks, CE Internal Remarks, Last Activity Date & Time, Last comment as per Synergy, Next Follow up Date & Time, Action Taken, Ticket Status (Open/Updated/Time Out/Close)"
+
+cewisedailyreport:
+  columns: "Transaction Date, Zone, Zonal Head, Zonal Head Contact Details, Zonal Head Email, State Head, State Head Contact Details, State Head Email, Channel Manager, Channel Manager Contact Details, Channel Manager Email, Channel Executive, Channel Executive Contact Details, Channel Executive Email, Number of Assigned ATMs, Uptime Target, MTD Uptime, MTD Transaction Target, MTD Transactions Achieved"
+
+atmidwisedailyreport:
+  columns: "Date, ATM ID Current, Bank Name, Old ATM IDs, PS ID, ATM Location, City, State, Zone, Site Type, Live Date, Zonal Head, Zonal Head User ID, Zonal Head Mobile Number, Zonal Head Email ID, SCM Name, SCM User ID, SCM Mobile Number, SCM Email ID, CM Name, CM User ID, CM Mobile Number, CM Email ID, CE Name, CE User ID, CE Mobile Number, CE Email ID, Target, MTD till 31st October 2024, MTD Transactions Achieved Percentage, MTD Uptime"
+
+
+report:
+  columns: "ID,Username,Action Time,Action Taken,ATM ID,Ticket No,ETA Updated To,Travel Mode,Travel ETA,Work Mode,Owner,Customer Remarks,Internal Remarks,Create Ticket Reason"
+ 
+summary:
+  columns: "ID, Atm Id, Ticket Id, Event Code, CE Name, First Fetch Time, Last Fetch Time, Ticket Fetch Count, CE Update Count" 
+
+#ticket:
+ # history:
+ #   archive: true
+
+
+#TicketHistoryArchive
+
+ticket:
+  history:
+     archive: "Srno, Customer, EquipmentId, Model, AtmCategory, AtmClassification, CallDate, CreatedDate, CallType, SubCallType, CompletionDateWithTime,DowntimeInMins, Vendor, ServiceCode, Diagnosis, EventCode, HelpdeskName, LastAllocatedTime, LastComment, lastActivity, Status, SubStatus, Ro, Site, Address, City, LocationName, State, NextFollowUp, StaDateTime, Owner, CustomerRemark"
+
+file:
+  download:
+     base-url: http://localhost:9092/api/excel
+temp:
+ directory: D:\Documents\TicketHistoryDownload\Excel
+ 
+server:
+  tomcat:
+    connection-timeout: 200000
+    
+app:
+  color:
+    prefix: 
+  ticket:
+    color:
+      timeout:
+        border: 0XFFE23A3A
+        fill: 0XFFFFF7F7
+      update:
+        border: 0XFF00A7DB
+        fill: 0XFFEBFAFF
+      open:
+        border: 0XFFFFFFFF
+        fill: 0XFFFFFFFF
+      travel:
+        border: 0XFF23A36D
+        fill: 0XFFEFFFF8
+      DEFAULT:
+        border: 0XFFFFFFFF
+        fill: 0XFFFFFFFF
+ops360:
+  assets:
+    base-path: /usr/ops360/Assets/
+    base-url: https://ops360uat.hitachi-payments.com/path/
+  ticketing:
+    default:
+          tat: 4
+    batch-size: 100       
+    eta:
+     documents:
+        :n : 5 
+        
+logging:
+  level:
+    ROOT: error    
+    com.hpy: debug
+    org.apache.kafka.clients.NetworkClient: ERROR
+    org.apache.kafka.clients: ERROR     
+        
+#spring:
+#  application:
+#    name: ticketing
+#  datasource:
+#    url: jdbc:sqlserver://172.16.15.132:1433;databaseName=OPS360UAT;encrypt=true;trustServerCertificate=true;
+#    username: appuser
+#    password: hitachi@123
+#    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#  jpa:
+#    hibernate:
+#      ddl-auto: none
+#    show-sql: true
+#    open-in-view: false
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.SQLServerDialect
+#        format_sql: true
+#
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
+#          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+#
+#synergy:
+#  base-url: https://ops360dev.hitachi-payments.com/synergy/HitachiAPI_Integration/api
+#  username: OPS360API
+#  password: Cogent@123
+#  
+#
+#jwt:
+#  auth:
+#    converter:
+#      resource-id: ${keycloak.resource}
+#      principle-attribute: preferred_username  
+#
+#keycloak:
+#  domain: 127.0.0.1:8080
+##  domain: ops360dev.hitachi-payments.com:9102
+##  domain: 172.16.15.192:9102
+#  realm: HPY
+#  resource: ops-360
+#  issuer-uri: http://${keycloak.domain}
+#  adminClientSecret: 3Asf42GnEqOfatIQZULao5764AoYNnLY
+#  auth-server-url: http://${keycloak.domain}
+#  adminClientId: ${keycloak.resource}
+#  urls:
+#    auth: http://${keycloak.domain}
+#    tokenURL: http://${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+#  ssl-required: external
+#  use-resource-role-mappings: true  
+#
+#app:
+#  documentUploadDirectory: D:\\documentDirectory
+#  maxFileSize: 2097152
+#  cross-origin:
+#    allow: https://ops360uat.hitachi-payments.com
+#  
+#eureka:
+#  instance:
+#    prerfer-ip-address: true
+#  client:
+#    fetch-registry: true
+#    registry-with-eureka: true
+#    service-url:
+#      defaultZone: http://172.16.15.192:9101/eureka
+##      defaultZone: http://127.0.0.1:9101/eureka
+#
+#ops360:
+#  ticketing:
+#    max-atm-list-count: 5
+#
+#

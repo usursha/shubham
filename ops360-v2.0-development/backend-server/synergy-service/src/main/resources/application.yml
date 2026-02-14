@@ -1,0 +1,16 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: synergy-service
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs #these urls will used to load the swagger ui of this service by the api gateway
+  swagger-ui:
+    path: /swagger-ui/index.html
+    
+logging:
+  level:
+    ROOT: error
+ 

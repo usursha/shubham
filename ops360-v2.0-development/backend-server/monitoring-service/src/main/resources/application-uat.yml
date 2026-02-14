@@ -1,0 +1,74 @@
+Server:
+  port: 9400
+  
+spring:
+  kafka:
+    bootstrap-servers: 172.16.15.196:29092
+    consumer:
+      group-id: api-logs-group
+      auto-offset-reset: earliest
+      enable-auto-commit: true
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  application:
+    name: monitoring-service
+  datasource:
+    url: jdbc:sqlserver://172.16.15.120:1433;databaseName=OPS360;encrypt=true;trustServerCertificate=true;
+    username: appuser
+    password: hitachi@123
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+
+        
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+ 
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+          
+jwt:
+  auth:
+    converter:
+      resource-id: ${keycloak.resource}
+      principle-attribute: preferred_username  
+      
+  
+keycloak:
+  domain: 172.16.15.192:9102
+  realm: HPY
+  resource: ops360
+  issuer-uri: http://${keycloak.domain}
+  adminClientSecret: 3Asf42GnEqOfatIQZULao5764AoYNnLY
+  auth-server-url: http://${keycloak.domain}
+  adminClientId: ${keycloak.resource}
+  urls:
+    auth: http://${keycloak.domain}
+    tokenURL: http://${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+  ssl-required: external
+  use-resource-role-mappings: true
+        
+eureka:
+  instance:
+    prerfer-ip-address: true
+  client:
+    fetch-registry: true
+    registry-with-eureka: true
+    service-url:
+      defaultZone: http://172.16.15.192:9101/eureka

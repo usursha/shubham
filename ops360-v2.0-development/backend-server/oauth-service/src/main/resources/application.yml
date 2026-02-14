@@ -1,0 +1,92 @@
+app:
+  cross-origin:
+    allow: https://ops360dev.hitachi-payments.com    
+
+server:
+  port: 9103
+  
+springdoc:
+ api-docs:
+   path: /v3/api-docs 
+ swagger-ui:
+   path: /swagger-ui/index.html
+  
+spring:
+  profiles:
+    active: dev
+  application:
+    name: oauth-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+          
+  mail:
+    host: smtp-cluster27.immenzaces.com
+    username: hitachi@hitachi-payments.com
+    password: "1d6%cf98b61d4"
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+
+access_token_validate:
+  url: http://localhost:9103/oauth/validateToken
+  
+jwt:
+  auth:
+    converter:
+      resource-id: ${keycloak.resource}
+      principle-attribute: preferred_username  
+
+keycloak:
+  domain: localhost:8080
+  realm: HPY
+  resource: ops-360
+  issuer-uri: https://${keycloak.domain}
+  adminClientSecret: 13ptMbHcKqskC5zC586keD7VNBGsUTkJ
+  auth-server-url: http://${keycloak.domain}
+  adminClientId: ${keycloak.resource}
+  urls:
+    auth: http://${keycloak.domain}
+    tokenURL: http://${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+  ssl-required: external
+  use-resource-role-mappings: true
+  cli:
+    client_id: admin-cli
+    username: admin
+    password: admin
+    grant_type: password
+  certs-uri: http://localhost:8080/realms/${keycloak.realm}/protocol/openid-connect/certs
+  realm-uri: http://localhost:8080/realms/${keycloak.realm}
+  max-session:
+    allowed: 10
+    
+eureka:
+  instance:
+    prerfer-ip-address: true
+  client:
+    fetch-registry: true
+    registry-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:9101/eureka/
+      
+logging:
+  level:
+    ROOT: info
+      
+    

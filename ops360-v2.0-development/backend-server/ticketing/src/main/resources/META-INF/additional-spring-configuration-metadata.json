@@ -1,0 +1,19 @@
+{
+	"properties": [
+		{
+			"name": "synergy.base-url",
+			"type": "java.lang.String",
+			"description": "A description for 'synergy.base-url'"
+		},
+		{
+			"name": "synergy.username",
+			"type": "java.lang.String",
+			"description": "A description for 'synergy.username'"
+		},
+		{
+			"name": "synergy.password",
+			"type": "java.lang.String",
+			"description": "A description for 'synergy.password'"
+		}
+	]
+}

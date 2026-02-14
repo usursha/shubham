@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: MapPUC
+  datasource:
+    driver-class-name: org.postgresql.Driver
+#    password: India@123
+    password: Hitachi@123
+    url: jdbc:postgresql://localhost:5432/MAPPUC
+#    url: jdbc:postgresql://localhost:5444/Smart_ATM
+    username: postgres
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect 
+    
+Server:
+  port: 9201
+  
+  
+

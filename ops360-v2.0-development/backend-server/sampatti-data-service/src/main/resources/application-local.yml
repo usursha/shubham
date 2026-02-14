@@ -1,0 +1,98 @@
+Server:
+  port: 9208
+springdoc:
+  api-docs:
+    path: /v3/api-docs 
+  swagger-ui:
+    path: /swagger-ui/index.html
+spring:
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9094}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+      retries: 3
+      batch-size: 16384
+      buffer-memory: 33554432
+      properties:
+        max.in.flight.requests.per.connection: 1
+        enable.idempotence: true
+  aop:
+    proxy-target-class: false
+    auto: true
+  datasource:
+    url: jdbc:sqlserver://172.16.15.120:1433;databaseName=OPS360UAT;encrypt=true;trustServerCertificate=true;
+    username: appuser
+    password: hitachi@123
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+          
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always          
+          
+logging:
+  level:
+    com.hpy: debug
+  file:
+    name: D:/var/sampatti_logs/application.log 
+
+sampatti:
+  base-url: https://ftweb.hitachi-payments.com:8443
+  sessionID: "4456"
+  requestTimestamp: "2023-05-25 17:24:44"
+  requestType: "GetToken"
+  
+
+jwt:
+  auth:
+    converter:
+      resource-id: ${keycloak.resource}
+      principle-attribute: preferred_username  
+
+keycloak:
+  domain: localhost:8080
+  realm: HPY
+  resource: ops360
+  issuer-uri: http://${keycloak.domain}
+  adminClientSecret: eGUVcXgAusOlVvMAi5QnfaZXw7ZoCliC
+  auth-server-url: http://${keycloak.domain}
+  adminClientId: ${keycloak.resource}
+  urls:
+    auth: http://${keycloak.domain}
+    tokenURL: http://${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+  ssl-required: external
+  use-resource-role-mappings: true
+  
+eureka:
+  instance:
+    prerfer-ip-address: true
+  client:
+    fetch-registry: true
+    registry-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:9101/eureka
+      
+server:
+  ssl:
+    enabled: false

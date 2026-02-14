@@ -1,0 +1,32 @@
+app:
+  cross-origin:
+    allow: https://ops360.hitachi-payments.com
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+   
+spring:
+  boot:
+    admin:
+      client:
+        url: http://172.16.24.58:9000 #Admin portal url.   
+        instance:
+          name: OAuth Service
+          service-base-url: http://172.16.24.58:9092 #This is current application url.
+  
+keycloak:
+  domain: 172.16.24.58:9102
+  realm: HPY
+  resource: ops360
+  adminClientSecret: y6sptozT3UqH6i5ja45ifPMREmAT5JZf
+    
+eureka:
+  client:
+    service-url:
+      defaultZone:  http://172.16.24.58:9101/eureka

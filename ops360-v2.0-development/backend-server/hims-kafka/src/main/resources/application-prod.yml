@@ -1,0 +1,50 @@
+server:
+  port: 9223
+
+spring:
+  kafka:
+   listener:
+      ack-mode: manual
+   bootstrap-servers: 172.16.24.61:29092
+   consumer:
+        group-id: ops360-ticket-details-group
+        auto-offset-reset: earliest
+        enable-auto-commit: false
+        key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        properties:
+          isolation.level: read_committed  # Ensures only committed messages are read
+          max.poll.records: 500            # Controls batch size for processing
+          fetch.max.bytes: 52428800        # 50MB max fetch size
+          session.timeout.ms: 15000        # Detect consumer failures faster
+          heartbeat.interval.ms: 5000      # More frequent heartbeat
+          retry.backoff.ms: 1000           # Delay between retries
+          reconnect.backoff.ms: 1000       # Delay before reconnecting
+          reconnect.backoff.max.ms: 10000
+   producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+      retries: 10
+      batch-size: 32768
+      buffer-memory: 67108864
+      properties:
+        max.in.flight.requests.per.connection: 1
+        enable.idempotence: true
+  datasource:
+    url: jdbc:sqlserver://172.16.24.64:1433;databaseName=OPS360;encrypt=true;trustServerCertificate=true;
+    username: ops.production
+    password: pro@ops360
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+logging:
+  level:
+    com.hpy: info

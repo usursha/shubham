@@ -1,0 +1,139 @@
+Server:
+  port: 9303
+  
+spring:
+  security:
+    oauth2:
+      resourceserver:
+         jwt:
+           issuer-uri: http://localhost:8080/realms/${keycloak.realm}
+           jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+  application:
+    name: mapping-service
+  datasource:
+    url: jdbc:sqlserver://172.16.15.120:1433;databaseName=OPS360;encrypt=true;trustServerCertificate=true;
+    username: appuser
+    password: hitachi@123
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      properties:
+      hibernate:
+        jdbc:
+          batch_size: 50
+        order_inserts: true
+        order_updates: true
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+         # Disable SELECT before INSERT
+        id.new_generator_mappings: false
+        # Performance optimization
+        generate_statistics: false
+        jdbc:
+          batch_size: 500
+      naming:
+          physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  batch:
+    job:
+      enabled: false
+      
+  cache:
+    type: simple
+  data:
+    redis:
+      host: localhost
+      port: 6379        
+  servlet:
+    multipart:
+      max-file-size: 10MB
+      max-request-size: 10MB          
+logging:
+  level:
+   org:
+      springframework:
+        cache: DEBUG
+        data:
+          redis: DEBUG  
+#     org:
+#       hibernate:
+#         type:
+#           descriptor:
+#             sql:
+#               BasicBinder: TRACE      
+
+#  data:
+#    redis:
+#      host: localhost
+#      port: 6379
+
+    
+        
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+      
+jwt:
+ auth:
+   converter:
+      resource-id: ${keycloak.resource}
+      principle-attribute: preferred_username  
+      
+keycloak:
+  domain: localhost:8080
+  realm: HPY
+  resource: ops-360
+  issuer-uri: http://${keycloak.domain}
+  adminClientSecret: 13ptMbHcKqskC5zC586keD7VNBGsUTkJ
+  auth-server-url: http://${keycloak.domain}
+  adminClientId: ${keycloak.resource}
+  urls:
+    auth: http://${keycloak.domain}
+    tokenURL: http://${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+  ssl-required: external
+  use-resource-role-mappings: true
+  
+eureka:
+  instance:
+    prerfer-ip-address: true
+  client:
+    fetch-registry: true
+    registry-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:9101/eureka
+geoapify:
+  api-key: 3e2cc3ae7fa449bfb8712850b3f8789a      
+app:
+  cross-origin:
+    allow: https://ops360uat.hitachi-payments.com 
+    
+mapping:
+  batch-size: 1000  
+ 
+olamaps:
+  api-key: QdqKbQFCj2djAy2KvQmJ4d8NS3k9co8mf5X34TPE
+  base-url: https://api.olamaps.io
+  routing-url: /routing/v1/directions
+  distance-matrix-url: /routing/v1/distanceMatrix
+ 
+  
+# ArcGIS Configuration
+arcgis:
+  api:
+    key: AAPTxy8BH1VEsoebNVZXo8HurOuRs0IuQWTqEkSLWqklJQD7pfPwUasw7Xg6RJz0RHAZdbRyM6M1t-Q8j135Ct-Lz3D9khFQsLXnGu6LLUz-bKMdrJ98ysdsZYYewmuQvOEUV2r1hUCUEFGdyuq42eakoMEdIOlqxaNl7lr6ssa7csHPUiASBl2r6fuOLVrnVsZvojYuQQseumXIUpMGIfVf3NV7B51xzhAuQDAGedC2O-Q.AT1_IjF90WxV
+  runtime:
+    install-directory: ${user.home}/.arcgis  
+         

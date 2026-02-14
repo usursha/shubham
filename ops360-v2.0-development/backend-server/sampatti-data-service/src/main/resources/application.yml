@@ -1,0 +1,20 @@
+spring:
+  profiles:
+    active: local
+  application:
+    name: sampatti-data-service
+
+  
+springdoc:
+  api-docs:
+    path: /v3/api-docs 
+  swagger-ui:
+    path: /swagger-ui/index.html
+    
+app:
+  cross-origin:
+    allow: https://ops360uat.hitachi-payments.com    
+
+server:
+  ssl:
+    enabled: false

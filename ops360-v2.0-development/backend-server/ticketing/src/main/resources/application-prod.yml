@@ -1,0 +1,119 @@
+Server:
+  port: 9202
+
+spring:
+  boot:
+    admin:
+      client:
+         url: http://172.16.24.58:9000 #Admin portal url.
+         instance:
+           name: Ticketing Service
+           service-base-url: http://172.16.24.58:9095 #This is current application url.
+  application:
+    name: ticketing
+  datasource:
+    url: jdbc:sqlserver://172.16.24.64:1433;databaseName=OPS360;encrypt=true;trustServerCertificate=true;
+    username: ops.production
+    password: pro@ops360
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+
+synergy:
+  base-url: https://crm360.hitachi-payments.com/HitachiAPI_IntegrationUAT/api
+  username: OPS360API
+  password: Cogent@123
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+  
+
+jwt:
+  auth:
+    converter:
+      resource-id: ${keycloak.resource}
+      principle-attribute: preferred_username  
+
+
+keycloak:
+  domain: 172.16.24.58:9102
+  realm: HPY
+  resource: ops360
+  issuer-uri: http://${keycloak.domain}
+  adminClientSecret: 3Asf42GnEqOfatIQZULao5764AoYNnLY
+  auth-server-url: http://${keycloak.domain}
+  adminClientId: ${keycloak.resource}
+  urls:
+    auth: http://${keycloak.domain}
+    tokenURL: http://${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+  ssl-required: external
+  use-resource-role-mappings: true  
+
+app:
+  documentUploadDirectory: D:\\documentDirectory
+  maxFileSize: 2097152
+  cross-origin:
+    allow: https://ops360.hitachi-payments.com
+  
+eureka:
+  instance:
+    prerfer-ip-address: true
+  client:
+    fetch-registry: true
+    registry-with-eureka: true
+    service-url:
+      defaultZone: http://172.16.24.58:9101/eureka
+
+ops360:
+  ticketing:
+    max-atm-list-count: 5
+
+knowlarity-service:
+       url: http://172.16.24.58:9080/knowlarity
+uam-service:
+       url:  http://172.16.24.58:9091/user-service
+
+dashboard-service:
+       url: http://172.16.24.57:9094/Cm_portalATMDetails	
+
+synergy-service:
+       url: http://172.16.24.58:9090/synergy
+
+oauth-service:
+       url: http://172.16.24.58:9092/oauth
+       
+hims:
+  api:
+    base:
+      #url: "https://7c18b3a9-3608-415b-b7d6-fb6a3942c1db.mock.pstmn.io"
+      #url: "https://172.16.15.36:9456/api"
+      url: "https://hims.hitachi-payments.com:443/api"
+    update:
+      endpoint: "/Update_FollowUp_Details"
+    create:
+      endpoint: "/Create_Service_Ticket"
+    enabled: true
+    timeout: 5000
+    retry:
+      attempts: 3	

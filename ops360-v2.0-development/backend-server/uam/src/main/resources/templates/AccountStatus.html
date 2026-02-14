@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title th:remove="all">Account Status Update</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; color: #333; background-color: #f4f4f4; margin: 0; padding: 0; }
+        .container { max-width: 600px; margin: 20px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .header { text-align: center; padding-bottom: 20px; border-bottom: 1px solid #eee; }
+        .header h1 { color: #ffc107; margin: 0; font-size: 24px; }
+        .content { padding: 20px 0; }
+        .content p { margin-bottom: 15px; }
+        .important { color: #dc3545; font-weight: bold; }
+        .button-container { text-align: center; margin-top: 25px; }
+        .button { display: inline-block; padding: 12px 25px; background-color: #007bff; color: #ffffff; text-decoration: none; border-radius: 5px; font-weight: bold; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>Important Account Update</h1>
+    </div>
+    <div class="content">
+        <p>Hello <span th:text="${userName}">[User Name]</span>,</p>
+
+        <p th:if="${statusType == 'locked'}" class="important">
+            Your account has been temporarily **LOCKED** due to multiple failed login attempts or unusual activity.
+        </p>
+        <p th:if="${statusType == 'unlocked'}" class="important">
+            Your account has been successfully **UNLOCKED**. You can now log in.
+        </p>
+        <p th:if="${statusType == 'expired'}" class="important">
+            Your password has **EXPIRED**. For security reasons, you must reset your password to continue using your account.
+        </p>
+
+        <p th:if="${reason != null and !#strings.isEmpty(reason)}">
+            Reason: <span th:text="${reason}">[Reason for status]</span>
+        </p>
+
+        <p>If you have any questions or need further assistance, please contact our support team:</p>
+        <div class="button-container">
+            <a th:href="${contactSupportUrl}" class="button">Contact Support</a>
+        </div>
+        <p>For your security, please do not share your login credentials with anyone.</p>
+        <p>Sincerely,</p>
+        <p>The Hitachi Team</p>
+    </div>
+</div>
+</body>
+</html>

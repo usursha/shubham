@@ -1,0 +1,452 @@
+[
+	{
+		"atmId": "INATM001",
+		"location": "parel",
+		"customer": "WLA-Money Spot",
+		"atmCategory": "Super Platinum",
+		"mtdPerformancePer": 60,
+		"uptimeTrendPer": 2,
+		"transactionTrendPer": 40
+	},
+	{
+		"atmId": "INATM002",
+		"location": "parel",
+		"customer": "WLA-Rajputana",
+		"atmCategory": "Bronze",
+		"mtdPerformancePer": 60,
+		"uptimeTrendPer": 2,
+		"transactionTrendPer": 40
+	},
+	{
+		"atmId": "INATM003",
+		"location": "parel",
+		"customer": "WLA-RLY",
+		"atmCategory": "Gold",
+		"mtdPerformancePer": 10,
+		"uptimeTrendPer": 2,
+		"transactionTrendPer": 40
+	},
+	{
+		"atmId": "INATM004",
+		"location": "parel",
+		"customer": "WLA-URVI",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 10,
+		"uptimeTrendPer": 2,
+		"transactionTrendPer": 40
+	},
+	{
+		"atmId": "INATM005",
+		"location": "parel",
+		"customer": "WLA-money spot",
+		"atmCategory": "Bronze",
+		"mtdPerformancePer": 10,
+		"uptimeTrendPer": 2,
+		"transactionTrendPer": 40
+	},
+	{
+		"atmId": "INATM006",
+		"location": "parel",
+		"customer": "WLA-money spot",
+		"atmCategory": "New",
+		"mtdPerformancePer": 10,
+		"uptimeTrendPer": 2,
+		"transactionTrendPer": 40
+	},
+	{
+		"atmId": "INATM007",
+		"location": "parel",
+		"customer": "WLA-money spot",
+		"atmCategory": "Bronze",
+		"mtdPerformancePer": 10,
+		"uptimeTrendPer": 2,
+		"transactionTrendPer": 40
+	},
+	{
+		"atmId": "INATM008",
+		"location": "parel",
+		"customer": "WLA-URVI",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 30,
+		"uptimeTrendPer": 2,
+		"transactionTrendPer": 40
+	},
+	{
+		"atmId": "INATM009",
+		"location": "parel",
+		"customer": "WLA-Rajputana",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 50,
+		"uptimeTrendPer": 2,
+		"transactionTrendPer": 40
+	},
+	{
+		"atmId": "INATM010",
+		"location": "parel",
+		"customer": "WLA-Rajputana",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 60,
+		"uptimeTrendPer": 2,
+		"transactionTrendPer": 40
+	},
+	{
+		"atmId": "INATM011",
+		"location": "parel",
+		"customer": "WLA-money spot",
+		"atmCategory": "Bronze",
+		"mtdPerformancePer": 10,
+		"uptimeTrendPer": 2,
+		"transactionTrendPer": 40
+	},
+	{
+		"atmId": "INATM012",
+		"location": "parel",
+		"customer": "WLA-URVI",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 30,
+		"uptimeTrendPer": 2,
+		"transactionTrendPer": 40
+	},
+	{
+		"atmId": "INATM013",
+		"location": "parel",
+		"customer": "WLA-Rajputana",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 50,
+		"uptimeTrendPer": 2,
+		"transactionTrendPer": 40
+	},
+	{
+		"atmId": "INATM014",
+		"location": "parel",
+		"customer": "WLA-Rajputana",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 60,
+		"uptimeTrendPer": 2,
+		"transactionTrendPer": 40
+	},
+	{
+		"atmId": "INATM015",
+		"location": "parel",
+		"customer": "WLA-Money Spot",
+		"atmCategory": "Super Platinum",
+		"mtdPerformancePer": 70,
+		"uptimeTrendPer": 5,
+		"transactionTrendPer": 50
+	},
+	{
+		"atmId": "INATM016",
+		"location": "parel",
+		"customer": "WLA-Rajputana",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 75,
+		"uptimeTrendPer": 8,
+		"transactionTrendPer": 45
+	},
+	{
+		"atmId": "INATM017",
+		"location": "parel",
+		"customer": "WLA-RLY",
+		"atmCategory": "Gold",
+		"mtdPerformancePer": 20,
+		"uptimeTrendPer": 3,
+		"transactionTrendPer": 60
+	},
+	{
+		"atmId": "INATM018",
+		"location": "parel",
+		"customer": "WLA-URVI",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 15,
+		"uptimeTrendPer": 4,
+		"transactionTrendPer": 55
+	},
+	{
+		"atmId": "INATM019",
+		"location": "parel",
+		"customer": "WLA-Money Spot",
+		"atmCategory": "Super Platinum",
+		"mtdPerformancePer": 65,
+		"uptimeTrendPer": 6,
+		"transactionTrendPer": 48
+	},
+	{
+		"atmId": "INATM020",
+		"location": "parel",
+		"customer": "WLA-Rajputana",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 72,
+		"uptimeTrendPer": 7,
+		"transactionTrendPer": 42
+	},
+	{
+		"atmId": "INATM021",
+		"location": "parel",
+		"customer": "WLA-RLY",
+		"atmCategory": "Gold",
+		"mtdPerformancePer": 18,
+		"uptimeTrendPer": 5,
+		"transactionTrendPer": 58
+	},
+	{
+		"atmId": "INATM022",
+		"location": "parel",
+		"customer": "WLA-URVI",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 12,
+		"uptimeTrendPer": 6,
+		"transactionTrendPer": 51
+	},
+	{
+		"atmId": "INATM023",
+		"location": "parel",
+		"customer": "WLA-Money Spot",
+		"atmCategory": "Super Platinum",
+		"mtdPerformancePer": 68,
+		"uptimeTrendPer": 4,
+		"transactionTrendPer": 49
+	},
+	{
+		"atmId": "INATM024",
+		"location": "parel",
+		"customer": "WLA-Rajputana",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 78,
+		"uptimeTrendPer": 9,
+		"transactionTrendPer": 44
+	},
+	{
+		"atmId": "INATM025",
+		"location": "parel",
+		"customer": "WLA-RLY",
+		"atmCategory": "Gold",
+		"mtdPerformancePer": 22,
+		"uptimeTrendPer": 4,
+		"transactionTrendPer": 62
+	},
+	{
+		"atmId": "INATM026",
+		"location": "parel",
+		"customer": "WLA-URVI",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 14,
+		"uptimeTrendPer": 5,
+		"transactionTrendPer": 53
+	},
+	{
+		"atmId": "INATM027",
+		"location": "parel",
+		"customer": "WLA-Money Spot",
+		"atmCategory": "Super Platinum",
+		"mtdPerformancePer": 67,
+		"uptimeTrendPer": 3,
+		"transactionTrendPer": 47
+	},
+	{
+		"atmId": "INATM028",
+		"location": "parel",
+		"customer": "WLA-Rajputana",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 80,
+		"uptimeTrendPer": 10,
+		"transactionTrendPer": 43
+	},
+	{
+		"atmId": "INATM029",
+		"location": "parel",
+		"customer": "WLA-RLY",
+		"atmCategory": "Gold",
+		"mtdPerformancePer": 25,
+		"uptimeTrendPer": 5,
+		"transactionTrendPer": 65
+	},
+	{
+		"atmId": "INATM030",
+		"location": "parel",
+		"customer": "WLA-URVI",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 16,
+		"uptimeTrendPer": 6,
+		"transactionTrendPer": 50
+	},
+	{
+		"atmId": "INATM031",
+		"location": "parel",
+		"customer": "WLA-Money Spot",
+		"atmCategory": "Super Platinum",
+		"mtdPerformancePer": 66,
+		"uptimeTrendPer": 2,
+		"transactionTrendPer": 46
+	},
+	{
+		"atmId": "INATM032",
+		"location": "parel",
+		"customer": "WLA-Rajputana",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 82,
+		"uptimeTrendPer": 11,
+		"transactionTrendPer": 41
+	},
+	{
+		"atmId": "INATM033",
+		"location": "parel",
+		"customer": "WLA-RLY",
+		"atmCategory": "Gold",
+		"mtdPerformancePer": 28,
+		"uptimeTrendPer": 6,
+		"transactionTrendPer": 68
+	},
+	{
+		"atmId": "INATM034",
+		"location": "parel",
+		"customer": "WLA-URVI",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 18,
+		"uptimeTrendPer": 7,
+		"transactionTrendPer": 55
+	},
+	{
+		"atmId": "INATM035",
+		"location": "parel",
+		"customer": "WLA-Money Spot",
+		"atmCategory": "Super Platinum",
+		"mtdPerformancePer": 69,
+		"uptimeTrendPer": 3,
+		"transactionTrendPer": 48
+	},
+	{
+		"atmId": "INATM036",
+		"location": "parel",
+		"customer": "WLA-Rajputana",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 85,
+		"uptimeTrendPer": 12,
+		"transactionTrendPer": 40
+	},
+	{
+		"atmId": "INATM037",
+		"location": "parel",
+		"customer": "WLA-RLY",
+		"atmCategory": "Gold",
+		"mtdPerformancePer": 30,
+		"uptimeTrendPer": 7,
+		"transactionTrendPer": 70
+	},
+	{
+		"atmId": "INATM038",
+		"location": "parel",
+		"customer": "WLA-URVI",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 20,
+		"uptimeTrendPer": 8,
+		"transactionTrendPer": 60
+	},
+	{
+		"atmId": "INATM039",
+		"location": "parel",
+		"customer": "WLA-Money Spot",
+		"atmCategory": "Super Platinum",
+		"mtdPerformancePer": 70,
+		"uptimeTrendPer": 4,
+		"transactionTrendPer": 50
+	},
+	{
+		"atmId": "INATM040",
+		"location": "parel",
+		"customer": "WLA-Rajputana",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 88,
+		"uptimeTrendPer": 13,
+		"transactionTrendPer": 45
+	},
+	{
+		"atmId": "INATM041",
+		"location": "parel",
+		"customer": "WLA-RLY",
+		"atmCategory": "Gold",
+		"mtdPerformancePer": 32,
+		"uptimeTrendPer": 8,
+		"transactionTrendPer": 72
+	},
+	{
+		"atmId": "INATM042",
+		"location": "parel",
+		"customer": "WLA-URVI",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 22,
+		"uptimeTrendPer": 9,
+		"transactionTrendPer": 65
+	},
+	{
+		"atmId": "INATM043",
+		"location": "parel",
+		"customer": "WLA-Money Spot",
+		"atmCategory": "Super Platinum",
+		"mtdPerformancePer": 72,
+		"uptimeTrendPer": 5,
+		"transactionTrendPer": 52
+	},
+	{
+		"atmId": "INATM044",
+		"location": "parel",
+		"customer": "WLA-Rajputana",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 90,
+		"uptimeTrendPer": 14,
+		"transactionTrendPer": 47
+	},
+	{
+		"atmId": "INATM045",
+		"location": "parel",
+		"customer": "WLA-RLY",
+		"atmCategory": "Gold",
+		"mtdPerformancePer": 35,
+		"uptimeTrendPer": 9,
+		"transactionTrendPer": 75
+	},
+	{
+		"atmId": "INATM046",
+		"location": "parel",
+		"customer": "WLA-URVI",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 24,
+		"uptimeTrendPer": 10,
+		"transactionTrendPer": 68
+	},
+	{
+		"atmId": "INATM047",
+		"location": "parel",
+		"customer": "WLA-Money Spot",
+		"atmCategory": "Super Platinum",
+		"mtdPerformancePer": 74,
+		"uptimeTrendPer": 6,
+		"transactionTrendPer": 55
+	},
+	{
+		"atmId": "INATM048",
+		"location": "parel",
+		"customer": "WLA-Rajputana",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 92,
+		"uptimeTrendPer": 15,
+		"transactionTrendPer": 49
+	},
+	{
+		"atmId": "INATM049",
+		"location": "parel",
+		"customer": "WLA-RLY",
+		"atmCategory": "Gold",
+		"mtdPerformancePer": 38,
+		"uptimeTrendPer": 10,
+		"transactionTrendPer": 78
+	},
+	{
+		"atmId": "INATM050",
+		"location": "parel",
+		"customer": "WLA-URVI",
+		"atmCategory": "Silver",
+		"mtdPerformancePer": 26,
+		"uptimeTrendPer": 11,
+		"transactionTrendPer": 70
+	}
+]

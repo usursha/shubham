@@ -1,0 +1,37 @@
+[{
+    "reason": "Theft"
+ },
+ {
+    "reason": "Anti Skimming"
+ },
+ {
+    "reason": "Vandalism"
+ },
+ {
+    "reason": "UPS Device Stolen"
+ },
+ {
+    "reason": "UPS Battery Stolen"
+ },
+ {
+    "reason": "UPS Battery Backup Issue"
+ },
+ {
+    "reason": "UPS Battery Faulty"
+ },
+ {
+    "reason": "Modem Damaged"
+ },
+ {
+    "reason": "Vsat Antenna Damaged"
+ },
+ {
+    "reason": "IFL Cabel Damaged"
+ },
+ {
+    "reason": "LAN Cable"
+ },
+ {
+    "reason": "Duracell Battery"
+ }
+]

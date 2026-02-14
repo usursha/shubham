@@ -1,0 +1,55 @@
+server:
+  port: 9105
+  
+spring:
+  application:
+    name: language-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+#  messages:
+#    basename: messages
+
+hpy:
+  language: 
+    default: en
+    message-file: /var/language/messages.properties
+    
+app:
+  cross-origin:
+    allow: https://ops360uat.hitachi-payments.com
+    
+jwt:
+  auth:
+    converter:
+      resource-id: ${keycloak.resource}
+      principle-attribute: preferred_username  
+  
+  
+keycloak:
+  domain: localhost:8080
+#  domain: ops360dev.hitachi-payments.com:9102
+  realm: HPY
+  resource: ops-360
+  issuer-uri: http://${keycloak.domain}
+  adminClientSecret: 13ptMbHcKqskC5zC586keD7VNBGsUTkJ
+  auth-server-url: http://${keycloak.domain}
+  adminClientId: ${keycloak.resource}
+  urls:
+    auth: http://${keycloak.domain}
+    tokenURL: http://${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+  ssl-required: external
+  use-resource-role-mappings: true
+
+    
+eureka:
+  instance:
+    prerfer-ip-address: true
+  client:
+    fetch-registry: true
+    registry-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:9101/eureka

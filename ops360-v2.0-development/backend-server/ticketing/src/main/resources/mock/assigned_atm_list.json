@@ -1,0 +1,27 @@
+[
+	{
+		"atmId": "INATM001",
+		"location": "parel",
+		"bank": "TOM"
+	},
+	{
+		"atmId": "INATM002",
+		"location": "parel",
+		"bank": "TOM"
+	},
+	{
+		"atmId": "INATM003",
+		"location": "parel",
+		"bank": "TOM"
+	},
+	{
+		"atmId": "INATM004",
+		"location": "parel",
+		"bank": "TOM"
+	},
+	{
+		"atmId": "INATM005",
+		"location": "parel",
+		"bank": "TOM"
+	}
+]

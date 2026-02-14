@@ -1,0 +1,34 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: mapping-service
+  cache:
+    type: simple
+    cache-names: atmIds, ceIds, cmIds, scmIds, rcmIds, numbers
+  data:
+   redis:
+    host: localhost
+    port: 6379  
+  
+  autoconfigure:
+    exclude: org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui/index.html
+        
+logging:
+  level:
+    com:
+      hpy: INFO
+    org:
+      springframework:
+        cache: DEBUG
+        interceptor: DEBUG
+    root: INFO
+  file:
+    name: D:/var/logs/mapping-service/application.log 
+    

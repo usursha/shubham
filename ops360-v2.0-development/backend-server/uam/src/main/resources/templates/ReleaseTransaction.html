@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Transaction Release Notice</title>
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #f4f4f4; padding: 10px; text-align: center; }
+        .content { padding: 20px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h2>Transaction Release Notice</h2>
+    </div>
+    <div class="content">
+        <p>Dear <span th:text="${merchantName}">[merchantName]</span>,</p>
+        <p>The transaction with ID <strong th:text="${transactionId}">[transactionId]</strong> has been cleared and is now approved for payout.</p>
+        <p>Details:</p>
+        <ul>
+            <li>Transaction Amount: <span th:text="${amount}">[amount]</span></li>
+            <li>Date: <span th:text="${transactionDate}">[transactionDate]</span></li>
+        </ul>
+        <p>You may now release the payout for this transaction.</p>
+        <p>For inquiries, please contact our support team.</p>
+        <p>Best regards,<br/>The Transaction Team</p>
+    </div>
+</div>
+</body>
+</html>

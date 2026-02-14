@@ -1,0 +1,160 @@
+server:
+  port: 9203
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs #these urls will used to load the swagger ui of this service by the api gateway
+  swagger-ui:
+    path: /swagger-ui.html
+
+spring:
+  # Redis Configuration - Added for caching
+  data:
+    redis:
+      host: ${REDIS_HOST:localhost}           # Redis server host
+      port: ${REDIS_PORT:6379}                # Redis server port
+      password: ${REDIS_PASSWORD:}            # Redis password (empty if no auth)
+      timeout: 60000ms                        # Connection timeout
+      connect-timeout: 10000ms                # Connection establishment timeout
+      database: ${REDIS_DATABASE:0}           # Redis database index (0-15)
+      
+      # Jedis Connection Pool Configuration
+      jedis:
+        pool:
+          max-active: 8                       # Maximum number of connections in the pool
+          max-wait: -1ms                      # Maximum time to wait for a connection
+          max-idle: 8                         # Maximum number of idle connections
+          min-idle: 0                         # Minimum number of idle connections
+          time-between-eviction-runs: 30000ms # Time between eviction runs
+      
+      ssl:
+        enabled: false                              # Enable SSL connection (set true for production)
+  
+  # Cache Configuration - Added for Redis caching
+  cache:
+    type: redis                             # Cache type
+    redis:
+      time-to-live: 720m                    # Default TTL for cache entries (720 minutes)
+      cache-null-values: false              # Don't cache null values
+      use-key-prefix: true                  # Use key prefix for cache keys
+      key-prefix: "atm_cache::"             # Prefix for all cache keys
+
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9094}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+      retries: 3
+      batch-size: 16384
+      buffer-memory: 33554432
+      properties:
+        max.in.flight.requests.per.connection: 1
+        enable.idempotence: true
+  aop:
+    proxy-target-class: false
+    auto: true
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000 #Admin portal url.
+        instance:
+          name: atmService
+          service-base-url: http://localhost:9203 #This is current application url.
+  application:
+    name: atm-service
+  datasource:
+    url: jdbc:sqlserver://172.16.15.120:1433;databaseName=OPS360;encrypt=true;trustServerCertificate=true;
+    username: appuser
+    password: hitachi@123
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    # Added cache endpoint for monitoring Redis cache
+    cache:
+      enabled: true
+
+synergy:
+  base-url: https://ops360dev.hitachi-payments.com/synergy/HitachiAPI_Integration/api
+  username: OPS360API
+  password: Cogent@123
+
+app:
+  cross-origin:
+    allow: https://ops360uat.hitachi-payments.com
+  # Added custom cache configuration
+  cache:
+    default-ttl: 720                         # Default cache TTL in minutes
+    redis:
+      key-prefix: "atm_filters"             # Prefix for ATM filter cache keys
+      max-retries: 3                        # Maximum retry attempts for Redis operations
+      retry-delay: 1000                     # Delay between retries in milliseconds
+
+jwt:
+  auth:
+    converter:
+      resource-id: ${keycloak.resource}
+      principle-attribute: preferred_username
+
+keycloak:
+  domain: localhost:8080
+  # domain: 172.16.15.192:9102
+  # domain: ops360dev.hitachi-payments.com:9102
+  realm: HPY
+  resource: ops-360
+  issuer-uri: http://${keycloak.domain}
+  adminClientSecret: 13ptMbHcKqskC5zC586keD7VNBGsUTkJ
+  auth-server-url: http://${keycloak.domain}
+  adminClientId: ${keycloak.resource}
+  urls:
+    auth: http://${keycloak.domain}
+    tokenURL: http://${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+  ssl-required: external
+  use-resource-role-mappings: true
+
+ops360:
+  dashboard:
+    max-atm-list-count: 10
+
+#app:
+# documentUploadDirectory: D:\\documentDirectory
+# maxFileSize: 2097152
+
+eureka:
+  instance:
+    prerfer-ip-address: true
+  client:
+    fetch-registry: true
+    registry-with-eureka: true
+    service-url:
+      # defaultZone: http://172.16.15.192:9101/eureka
+      defaultZone: http://localhost:9101/eureka
+
+logging:
+  level:
+    com.hpy: DEBUG
+    # Added Redis and Cache related logging
+    org.springframework.cache: INFO         # Cache-related logs
+    org.springframework.data.redis: INFO    # Redis-related logs

@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: local
+springdoc:
+ api-docs:
+   path: /v3/api-docs 
+ swagger-ui:
+   path: /swagger-ui/index.html 
+    
+logging:
+  level:
+    com.hpy: INFO
+    

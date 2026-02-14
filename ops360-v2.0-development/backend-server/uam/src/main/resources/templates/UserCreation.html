@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			line-height: 1.6;
+			color: #333;
+			background-color: #f4f4f4;
+			margin: 0;
+			padding: 0;
+		}
+
+		.container {
+			max-width: 600px;
+			margin: 20px auto;
+			background: #fff;
+			padding: 30px;
+			border-radius: 8px;
+			box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+		}
+
+		.header {
+			text-align: center;
+			padding-bottom: 20px;
+			border-bottom: 1px solid #eee;
+		}
+
+		.header h1 {
+			color: #0056b3;
+			margin: 0;
+			font-size: 24px;
+		}
+
+		.content {
+			padding: 20px 0;
+		}
+
+		.content p {
+			margin-bottom: 15px;
+			font-size: 16px;
+			color: #555555;
+			line-height: 1.5;
+		}
+
+		.credentials strong {
+			display: block;
+			margin-bottom: 5px;
+			color: #333333;
+		}
+
+		.button-container {
+			text-align: center;
+			margin-top: 25px;
+		}
+
+		.button {
+			display: inline-block;
+			padding: 12px 25px;
+			background-color: #007bff;
+			color: #ffffff;
+			text-decoration: none;
+			border-radius: 5px;
+			font-weight: bold;
+		}
+
+		.footer {
+			text-align: center;
+			padding: 20px;
+			background-color: #f8f8f8;
+			border-top: 1px solid #e0e0e0;
+			border-radius: 0 0 8px 8px;
+		}
+
+		.footer p {
+			font-size: 14px;
+			color: #777777;
+			margin: 5px 0;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="container">
+		<div class="header">
+			<h1>Your Registeration is Successfull</h1>
+		</div>
+		<div class="content">
+			<p>Dear <span th:text="${userName}">User Name</span>,</p>
+			<p>Congratulations! Your registration is successful. Below are your login details:</p>
+			<div class="credentials">
+				<p><strong>User ID:</strong> <span th:text="${userName}">userName</span></p>
+				<p><strong>Password:</strong> <span th:text="${tempPassword}">tempPassword</span></p>
+			</div>
+			<p>Your password will expire on <strong th:text="${expiryTime}">expiryTime</strong>. For security reasons,
+				please change your password before it expires.</p>
+			<h3 style="font-size: 18px; color: #333333; margin-top: 20px;">Set Up Multi-Factor Authentication</h3>
+			<p style="font-size: 16px; color: #555555; line-height: 1.5;">To enhance your account security, please set
+				up MFA by scanning the QR code below with an authenticator app (e.g., Google Authenticator, Microsoft
+				Authenticator):</p>
+			<div style="text-align: center; margin: 20px 0;">
+				<img th:src="'data:image/png;base64,' + ${qrCodeImageUrl}" alt="Authenticator QR Code"
+					style="max-width: 200px; height: auto; border: 1px solid #e0e0e0; border-radius: 4px;">
+			</div>
+			<p style="font-size: 16px; color: #555555; line-height: 1.5;">If you cannot scan the QR code, manually enter
+				this secret key in your authenticator app:</p>
+			<p style="font-size: 16px; color: #333333; font-weight: bold; background-color: #f8f8f8; padding: 10px; border-radius: 4px;"
+				th:text="${formattedSecretForDisplay}">formattedSecretForDisplay</p>
+			<p style="font-size: 16px; color: #555555; line-height: 1.5;">For security, please change your password
+				after logging in for the first time.</p>
+
+		</div>
+		<div class="footer">
+			<p>If you have any issues, please contact our support team.</p>
+			<p>Thank you for choosing our services.</p>
+			<p>Best regards,<br> Hitachi Payment Services</p>
+			<p>&copy; <span th:text="${currentYear}">2025</span> Hitachi Payment Services. All rights reserved.</p>
+		</div>
+	</div>
+</body>
+
+</html>

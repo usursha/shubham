@@ -1,0 +1,81 @@
+server:
+  port: 9106
+  
+spring:
+  application:
+    name: asset-service
+  datasource:
+
+    url: jdbc:sqlserver://172.16.24.64:1433;databaseName=OPS360;encrypt=true;trustServerCertificate=true;
+
+    username: ops.production
+    password: pro@ops360
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+        
+app:
+  cross-origin:
+    allow: https://ops360.hitachi-payments.com   
+
+basePath: /usr/ops360/
+read-filepath: /usr/ops360/
+asset.parent-type: User
+environment-seperator: /
+server-url: https://ops360.hitachi-payments.com/ops/gateway/
+
+user-access-management:
+  url: http://172.16.24.58:9100/user-service
+
+jwt:
+  auth:
+    converter:
+      resource-id: ${keycloak.resource}
+
+      principle-attribute: preferred_username  
+  
+keycloak:
+  domain: 172.16.24.58:9080
+  realm: HPY
+  resource: ops360
+  issuer-uri: http://${keycloak.domain}
+  adminClientSecret: Q8Gz70vzjzFmMMoL8EFBKx3z9Pz7v3Qv
+  auth-server-url: http://${keycloak.domain}
+  adminClientId: ${keycloak.resource}
+  urls:
+    auth: http://${keycloak.domain}
+    tokenURL: http://${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+  ssl-required: external
+  use-resource-role-mappings: true
+
+eureka:
+  instance:
+    prerfer-ip-address: true
+  client:
+    fetch-registry: true
+    registry-with-eureka: true
+    service-url:
+      defaultZone: http://172.16.24.58:9101/eureka 
+
+asset:
+  base:
+    path: /usr/ops360/Asset/
+    url: https://ops360.hitachi-payments.com/images/ 
+      
+
+
+#logging:
+#  level:
+#    ROOT: trace

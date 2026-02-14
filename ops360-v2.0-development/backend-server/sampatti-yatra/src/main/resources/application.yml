@@ -1,0 +1,45 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: sampatti
+  cache:
+    type: simple
+    cache-names: leaderboardData
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui/index.html
+
+    
+asset-service:
+  url: http://localhost:9100/feign-client
+    
+app:
+  cross-origin:
+    allow: https://ops360uat.hitachi-payments.com
+
+server:
+  ssl:
+    enabled: false
+
+
+logging:
+  level:
+    root: ERROR
+    feign.Logger: ERROR
+
+ceIncentivedownload:
+  columns: "Rank, Full Name, Role, Target, Achieved, Overfall/Shortfall, Rewards, Channel Manager, State Channel Manager, Zonal Head"
+
+cmIncentivedownload:
+  columns: "Rank, Full Name, Role, Target, Achieved, Overfall/Shortfall, Rewards, State Channel Manager, Zonal Head"
+
+scmIncentivedownload:
+  columns: "Rank, Full Name, Role, Target, Achieved, Overfall/Shortfall, Rewards, Zonal Head"
+
+rcmIncentivedownload:
+  columns: "Rank, Full Name, Role, Target, Achieved, Overfall/Shortfall, Rewards"
+

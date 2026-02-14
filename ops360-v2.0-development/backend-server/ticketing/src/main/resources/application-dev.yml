@@ -1,0 +1,162 @@
+Server:
+  port: 9202
+
+spring:
+  boot:
+    admin:
+      client:
+         url: http://localhost:9000 #Admin portal url.
+         instance:
+           name: Ticketing Service
+           service-base-url: http://localhost:9202 #This is current application url.
+  application:
+    name: ticketing
+  datasource:
+    url: jdbc:sqlserver://172.16.15.120:1433;databaseName=OPS360;encrypt=true;trustServerCertificate=true;
+    username: appuser
+    password: hitachi@123
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    
+    #kafka
+  kafka:
+    bootstrap-servers: ${SPRING_KAFKA_BOOTSTRAP_SERVERS:localhost:9094}
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      acks: all
+      retries: 3
+      batch-size: 16384
+      buffer-memory: 33554432
+      properties:
+        max.in.flight.requests.per.connection: 1
+        enable.idempotence: true  
+    #kafka
+    
+  camel:
+   springboot:
+    main-run-controller: true
+  
+  
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+      ddl-auto: none
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+          
+oauth:
+  url: http://localhost:9103/oauth          
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always          
+          
+logging:
+  level:
+    com.hpy: debug
+    root: INFO
+  file:
+    name: D:/var/logs/application.log  
+
+    
+
+synergy:
+  #base-url: https://ops360uat.hitachi-payments.com/ops/synergy/HitachiAPI_IntegrationUAT/api
+  base-url: https://ops360dev.hitachi-payments.com/synergy/HitachiAPI_IntegrationUAT/api
+  #base-url:  https://crm360.hitachi-payments.com/HitachiAPI_IntegrationUAT/api/
+  username: OPS360API
+  password: Cogent@123
+  
+
+jwt:
+  auth:
+    converter:
+      resource-id: ${keycloak.resource}
+      principle-attribute: preferred_username  
+
+keycloak:
+  domain: localhost:8080
+  realm: HPY
+  resource: ops360
+  issuer-uri: http://${keycloak.domain}
+  adminClientSecret: KjjqdKprBQpL8a24bsWSkI6zGqtYIQLg
+  auth-server-url: http://${keycloak.domain}
+  adminClientId: ${keycloak.resource}
+  urls:
+    auth: http://${keycloak.domain}
+    tokenURL: http://${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+  ssl-required: external
+  use-resource-role-mappings: true  
+
+app:
+  documentUploadDirectory: D:\\documentDirectory
+  maxFileSize: 2097152
+  cross-origin:
+    allow: https://ops360uat.hitachi-payments.com
+  
+eureka:
+  instance:
+    prerfer-ip-address: true
+  client:
+    fetch-registry: true
+    registry-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:9101/eureka
+
+ops360:
+  ticketing:
+    max-atm-list-count: 200
+    atm-batch-size: 50
+    
+    
+knowlarity-service:
+       url: http://localhost:9207/knowlarity
+uam-service:
+       url:  http://localhost:9104/user-service
+
+dashboard-service:
+       url: http://localhost:9200/Cm_portalATMDetails	
+
+synergy-service:
+       url: http://localhost:9206/synergy
+
+oauth-service:
+       url: http://localhost:9103/oauth
+       
+asset:
+  service:
+       url: http://localhost:9106/     
+       
+ # HIMS Configuration for Development      
+hims:
+  api:
+    base:
+      #url: "https://7c18b3a9-3608-415b-b7d6-fb6a3942c1db.mock.pstmn.io"
+      #url: "https://172.16.15.36:9456/api"
+      url: "https://hims-crm.hitachi-payments.com:9456/api"
+    update:
+      endpoint: "/Update_FollowUp_Details"
+    create:
+      endpoint: "/Create_Service_Ticket"
+    enabled: true
+    timeout: 5000
+    retry:
+      attempts: 3
+

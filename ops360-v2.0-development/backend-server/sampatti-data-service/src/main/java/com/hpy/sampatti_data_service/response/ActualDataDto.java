@@ -1,0 +1,11 @@
+package com.hpy.sampatti_data_service.response;
+
+import lombok.Data;
+
+@Data
+public class ActualDataDto {
+	
+	private int actualTransaction;
+	private Double actualUpTime;
+
+}

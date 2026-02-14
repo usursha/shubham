@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Auto Closed Alert</title>
+    <style>
+        body { font-family: Arial, sans-serif; color: #333; }
+        .container { max-width: 600px; margin: 0 auto; padding: 20px; }
+        .header { background-color: #f4f4f4; padding: 10px; text-align: center; }
+        .content { padding: 20px; }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h2>Case Auto-Closed Notification</h2>
+    </div>
+    <div class="content">
+        <p>Dear <span th:text="${recipientName}">[recipientName]</span>,</p>
+        <p>The case with ID <strong th:text="${caseId}">[caseId]</strong> has been automatically closed.</p>
+        <p>Details:</p>
+        <ul>
+            <li>Reason: <span th:text="${closeReason}">[closeReason]</span></li>
+            <li>Closure Date: <span th:text="${closureDate}">[closureDate]</span></li>
+        </ul>
+        <p>For inquiries, please contact our support team.</p>
+        <p>Best regards,<br/>The Case Management Team</p>
+    </div>
+</div>
+</body>
+</html>

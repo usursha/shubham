@@ -1,0 +1,93 @@
+Server:
+  port: 9209
+  
+spring:
+  boot:
+    admin:
+      client:
+        url: http://localhost:8000 #Admin portal url.
+        instance:
+          name: reportService
+          service-base-url: http://localhost:9209 #This is current application url.
+            
+
+  application:
+    name: report-service
+  datasource:
+    url: jdbc:sqlserver://172.16.15.120:1433;databaseName=OPS360;encrypt=true;trustServerCertificate=true;
+    username: appuser
+    password: hitachi@123
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+  
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+          
+  logging:
+  level:
+    com.hpy: debug
+    root: INFO
+  file:
+    name: D:/var/logs/application.log  
+          
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+      
+jwt:
+  auth:
+    converter:
+      resource-id: ${keycloak.resource}
+      principle-attribute: preferred_username  
+
+keycloak:
+  domain: localhost:8080
+  realm: HPY-2
+  resource: ops-360
+  issuer-uri: http://${keycloak.domain}
+  adminClientSecret: Q27d4GHYQZgaagZdnyn9YowlHurn2FU9
+
+  auth-server-url: http://${keycloak.domain}
+  adminClientId: ${keycloak.resource}
+  urls:
+    auth: http://${keycloak.domain}
+    tokenURL: http://${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+  ssl-required: external
+  use-resource-role-mappings: true
+      
+eureka:
+  instance:
+    prerfer-ip-address: true
+  client:
+    fetch-registry: true
+    registry-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:9101/eureka
+      
+      
+ops360:
+  assets:
+    base-path: /usr/ops360/Assets/
+    base-url: https://ops360uat.hitachi-payments.com/path/
+ticket:
+  history:
+  archive: 20
+

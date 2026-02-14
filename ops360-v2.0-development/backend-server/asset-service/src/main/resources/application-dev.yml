@@ -1,0 +1,85 @@
+server:
+  port: 9106
+  
+spring:
+  application:
+    name: asset-service
+  datasource:
+    url: jdbc:sqlserver://172.16.15.120:1433;databaseName=OPS360UAT;encrypt=true;trustServerCertificate=true;
+    username: appuser
+    password: hitachi@123
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true        
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://${keycloak.domain}/realms/${keycloak.realm}
+          jwk-set-uri: ${spring.security.oauth2.resourceserver.jwt.issuer-uri}/protocol/openid-connect/certs
+        
+app:
+  cross-origin:
+    allow: https://ops360uat.hitachi-payments.com   
+
+basePath: D:\\my-data\\asset-service\\
+read-filePath: D:\\my-data\\asset-service\\
+read-ticketimagesPath: D:\\my-data\\asset-service\\ticket
+saveAndReadTicketImagePath: D:\\my-data\\asset-service\\ticket
+asset.parent-type: User
+
+ticket-images-path:
+  url: http://localhost:9106/assets/view-ticket-images/%s/%s
+ 
+
+
+user-access-management:
+  url: http://localhost:9104/user-service
+
+jwt:
+  auth:
+    converter:
+      resource-id: ${keycloak.resource}
+      principle-attribute: preferred_username  
+  
+  
+keycloak:
+  domain: localhost:8080
+  realm: HPY
+  resource: ops360
+  issuer-uri: http://${keycloak.domain}
+  adminClientSecret: eGUVcXgAusOlVvMAi5QnfaZXw7ZoCliC
+  auth-server-url: http://${keycloak.domain}
+  adminClientId: ${keycloak.resource}
+  urls:
+    auth: http://${keycloak.domain}
+    tokenURL: http://${keycloak.domain}/realms/${keycloak.realm}/protocol/openid-connect/token
+  ssl-required: external
+  use-resource-role-mappings: true
+
+eureka:
+  instance:
+    prerfer-ip-address: true
+  client:
+    fetch-registry: true
+    registry-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:9101/eureka 
+
+
+
+asset:
+  base:
+    path: D:/ops360/Asset/
+    url: file:///D:/ops360/Asset/
+      
+#logging:
+#  level:
+#    root: trace
+#    feign.Logger: DEBUG

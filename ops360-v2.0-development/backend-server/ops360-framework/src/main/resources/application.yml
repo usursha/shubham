@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: ops360-framework
+  
+  datasource:
+    url: jdbc:sqlserver://172.16.15.120:1433;databaseName=OPS360UAT;encrypt=true;trustServerCertificate=true;
+    username: appuser
+    password: hitachi@123
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+        format_sql: true
+
